@@ -778,7 +778,7 @@ var handleRequest = function handleRequest(options, body) {
 
 /* Expose Properties */
 CirrusDB.defaults = {
-	hostname: 'www.quickbase.com',
+	hostname: 'www.cirrusdb.com',
 	port: 443,
 	path: '/api',
 	version: 'v1',
@@ -802,4 +802,11 @@ if (typeof module !== 'undefined' && module.exports) {
 
 if (typeof global !== 'undefined' && typeof window !== 'undefined' && global === window) {
 	global.CirrusDB = CirrusDB;
+
+	CirrusDB.defaults.hostname = window.location.hostname;
+	CirrusDB.defaults.port = window.location.port;
+
+	if (!CirrusDB.defaults.port) {
+		CirrusDB.defaults.port = window.location.protocol === 'https:' ? 443 : 80;
+	}
 }
