@@ -1,0 +1,31 @@
+{
+  "name": "cirrusdb",
+  "description": "A lightweight CirrusDB SDK",
+  "main": "dist/cirrusdb.browserify.min.js",
+  "authors": [
+    "Tristian Flanagan <tristian.flanagan@comcast.net> (https://github.com/tflanagan)"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "cirrus",
+    "cirrusdb",
+    "CirrusDB",
+    "SDK",
+    "sdk"
+  ],
+  "homepage": "",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/cirrusdb.js",
+    "dist/cirrusdb.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "private": false
+}

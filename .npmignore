@@ -1,0 +1,4 @@
+dist/cirrusdb.browserify.min.js
+src/
+.gitignore
+bower.json
