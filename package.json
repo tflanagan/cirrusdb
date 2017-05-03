@@ -9,9 +9,9 @@
     "SDK",
     "sdk"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/tflanagan/cirrusdb",
   "bugs": {
-    "url": "",
+    "url": "https://github.com/tflanagan/cirrusdb/issues",
     "email": "contact@tristianflanagan.com"
   },
   "license": "SEE LICENSE",
@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git://github.com/tflanagan/cirrusdb.git"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -47,7 +47,7 @@
   "engines": {
     "node": ">=4.0.*"
   },
-  "git": "",
+  "git": "git://github.com/tflanagan/cirrusdb.git",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
