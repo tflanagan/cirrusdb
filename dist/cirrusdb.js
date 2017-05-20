@@ -472,10 +472,10 @@ var CirrusDB = function () {
 	}, {
 		key: 'getTableRecords',
 		value: function getTableRecords(appid, tableid, options) {
-			var url = [appid, 'tables', tableid, 'records'];
+			var url = [appid, 'tables', tableid, 'records'].join('/');
 
 			if (options) {
-				url.push(qs.stringify(options));
+				url += '?' + qs.stringify(options);
 			}
 
 			return this.request(url, {

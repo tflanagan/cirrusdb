@@ -569,15 +569,15 @@ class CirrusDB {
 	}
 
 	getTableRecords(appid, tableid, options) {
-		const url = [
+		let url = [
 			appid,
 			'tables',
 			tableid,
 			'records'
-		];
+		].join('/');
 
 		if(options){
-			url.push(qs.stringify(options));
+			url += ('?' + qs.stringify(options));
 		}
 
 		return this.request(url, {
