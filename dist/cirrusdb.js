@@ -23,6 +23,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+var qs = require('querystring');
 var http = require('http');
 var https = require('https');
 var debug = require('debug');
@@ -470,8 +471,14 @@ var CirrusDB = function () {
 		}
 	}, {
 		key: 'getTableRecords',
-		value: function getTableRecords(appid, tableid) {
-			return this.request([appid, 'tables', tableid, 'records'], {
+		value: function getTableRecords(appid, tableid, options) {
+			var url = [appid, 'tables', tableid, 'records'];
+
+			if (options) {
+				url.push(qs.stringify(options));
+			}
+
+			return this.request(url, {
 				requiresAuthorization: true
 			});
 		}

@@ -16,6 +16,7 @@
 'use strict';
 
 /* Dependencies */
+const qs = require('querystring');
 const http = require('http');
 const https = require('https');
 const debug = require('debug');
@@ -567,13 +568,19 @@ class CirrusDB {
 		});
 	}
 
-	getTableRecords(appid, tableid) {
-		return this.request([
+	getTableRecords(appid, tableid, options) {
+		const url = [
 			appid,
 			'tables',
 			tableid,
 			'records'
-		], {
+		];
+
+		if(options){
+			url.push(qs.stringify(options));
+		}
+
+		return this.request(url, {
 			requiresAuthorization: true
 		});
 	}
