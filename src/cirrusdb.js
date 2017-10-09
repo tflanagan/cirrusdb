@@ -97,10 +97,12 @@ class CirrusDB {
 			debugRequest(reqNum, request.method, path, body);
 
 			return handleRequest(request, body).then((response) => {
-				response = JSON.parse(response);
-
 				if(!response.success){
-					throw new Error(response.message);
+					const err = new Error(response.message);
+
+					err.code = response.statusCode;
+
+					throw err;
 				}
 
 				if(response.hasOwnProperty('results')){
@@ -970,6 +972,10 @@ const handleRequest = function(options, body){
 			});
 
 			res.on('end', () => {
+				data = JSON.parse(data);
+
+				data.statusCode = res.statusCode;
+
 				resolve(data);
 			});
 		});
