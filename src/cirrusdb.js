@@ -76,7 +76,11 @@ class CirrusDB {
 
 			if(options.requiresAuthorization){
 				if(!this.settings.userToken){
-					return reject(new Error('Missing user token'));
+					const err = new Error('Missing user token');
+
+					err.code = 403;
+
+					return reject();
 				}
 
 				options.headers.Authorization = 'Bearer ' + this.settings.userToken;

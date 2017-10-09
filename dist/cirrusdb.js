@@ -85,7 +85,11 @@ var CirrusDB = function () {
 
 				if (options.requiresAuthorization) {
 					if (!_this.settings.userToken) {
-						return reject(new Error('Missing user token'));
+						var err = new Error('Missing user token');
+
+						err.code = 403;
+
+						return reject();
 					}
 
 					options.headers.Authorization = 'Bearer ' + _this.settings.userToken;
@@ -107,11 +111,11 @@ var CirrusDB = function () {
 
 				return handleRequest(request, body).then(function (response) {
 					if (!response.success) {
-						var err = new Error(response.message);
+						var _err = new Error(response.message);
 
-						err.code = response.statusCode;
+						_err.code = response.statusCode;
 
-						throw err;
+						throw _err;
 					}
 
 					if (response.hasOwnProperty('results')) {
