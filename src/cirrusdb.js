@@ -80,7 +80,7 @@ class CirrusDB {
 
 					err.code = 403;
 
-					return reject();
+					return reject(err);
 				}
 
 				options.headers.Authorization = 'Bearer ' + this.settings.userToken;

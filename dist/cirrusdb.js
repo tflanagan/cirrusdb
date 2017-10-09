@@ -89,7 +89,7 @@ var CirrusDB = function () {
 
 						err.code = 403;
 
-						return reject();
+						return reject(err);
 					}
 
 					options.headers.Authorization = 'Bearer ' + _this.settings.userToken;
