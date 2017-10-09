@@ -106,10 +106,12 @@ var CirrusDB = function () {
 				debugRequest(reqNum, request.method, path, body);
 
 				return handleRequest(request, body).then(function (response) {
-					response = JSON.parse(response);
-
 					if (!response.success) {
-						throw new Error(response.message);
+						var err = new Error(response.message);
+
+						err.code = response.statusCode;
+
+						throw err;
 					}
 
 					if (response.hasOwnProperty('results')) {
@@ -759,6 +761,10 @@ var handleRequest = function handleRequest(options, body) {
 			});
 
 			res.on('end', function () {
+				data = JSON.parse(data);
+
+				data.statusCode = res.statusCode;
+
 				resolve(data);
 			});
 		});
