@@ -878,13 +878,19 @@ class CirrusDB {
 		}, body);
 	}
 
-	getUser(userid, body) {
-		return this.request([
+	getUser(userid, options) {
+		let url = [
 			'users',
 			userid
-		], {
+		].join('/');
+
+		if(options){
+			url += ('?' + qs.stringify(options));
+		}
+
+		return this.request(url, {
 			requiresAuthorization: true
-		}, body);
+		});
 	}
 
 	putUser(userid, body) {

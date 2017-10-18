@@ -688,10 +688,16 @@ var CirrusDB = function () {
 		}
 	}, {
 		key: 'getUser',
-		value: function getUser(userid, body) {
-			return this.request(['users', userid], {
+		value: function getUser(userid, options) {
+			var url = ['users', userid].join('/');
+
+			if (options) {
+				url += '?' + qs.stringify(options);
+			}
+
+			return this.request(url, {
 				requiresAuthorization: true
-			}, body);
+			});
 		}
 	}, {
 		key: 'putUser',
