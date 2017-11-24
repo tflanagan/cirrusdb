@@ -169,6 +169,15 @@ class CirrusDB {
 		});
 	}
 
+	resetPassword(token, password) {
+		return this.request('auth/forgot-password/reset', {
+			method: 'POST'
+		}, {
+			token: token,
+			password: password
+		});
+	}
+
 	verifyToken(body) {
 		return this.request('auth/verify-token', {
 			method: 'POST'

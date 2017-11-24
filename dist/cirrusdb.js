@@ -182,6 +182,16 @@ var CirrusDB = function () {
 			});
 		}
 	}, {
+		key: 'resetPassword',
+		value: function resetPassword(token, password) {
+			return this.request('auth/forgot-password/reset', {
+				method: 'POST'
+			}, {
+				token: token,
+				password: password
+			});
+		}
+	}, {
 		key: 'verifyToken',
 		value: function verifyToken(body) {
 			return this.request('auth/verify-token', {
