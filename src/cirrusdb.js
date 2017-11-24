@@ -166,11 +166,17 @@ class CirrusDB {
 			email: email,
 			secretQuestion: secretQuestion,
 			secretAnswer: secretAnswer
-		})
+		});
 	}
 
 	verifyToken(body) {
 		return this.request('auth/verify-token', {
+			method: 'POST'
+		}, body);
+	}
+
+	validateToken(body) {
+		return this.request('auth/validate', {
 			method: 'POST'
 		}, body);
 	}

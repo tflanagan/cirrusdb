@@ -189,6 +189,13 @@ var CirrusDB = function () {
 			}, body);
 		}
 	}, {
+		key: 'validateToken',
+		value: function validateToken(body) {
+			return this.request('auth/validate', {
+				method: 'POST'
+			}, body);
+		}
+	}, {
 		key: 'getId',
 		value: function getId() {
 			return this.request('id', {
