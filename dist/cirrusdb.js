@@ -163,6 +163,25 @@ var CirrusDB = function () {
 			});
 		}
 	}, {
+		key: 'forgotPassword',
+		value: function forgotPassword(email, secretQuestion, secretAnswer) {
+			if (!secretQuestion || !secretAnswer) {
+				return this.request('auth/forgot-password/email', {
+					method: 'POST'
+				}, {
+					email: email
+				});
+			}
+
+			return this.request('auth/forgot-password/secret', {
+				method: 'POST'
+			}, {
+				email: email,
+				secretQuestion: secretQuestion,
+				secretAnswer: secretAnswer
+			});
+		}
+	}, {
 		key: 'verifyToken',
 		value: function verifyToken(body) {
 			return this.request('auth/verify-token', {
