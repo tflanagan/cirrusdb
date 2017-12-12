@@ -436,6 +436,13 @@ var CirrusDB = function () {
 			});
 		}
 	}, {
+		key: 'getTableRelationships',
+		value: function getTableRelationships(appid, tableid) {
+			return this.request([appid, 'tables', tableid, 'relationships'], {
+				requiresAuthorization: true
+			});
+		}
+	}, {
 		key: 'getTableForms',
 		value: function getTableForms(appid, tableid) {
 			return this.request([appid, 'tables', tableid, 'forms'], {

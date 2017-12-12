@@ -485,6 +485,17 @@ class CirrusDB {
 		});
 	}
 
+	getTableRelationships(appid, tableid) {
+		return this.request([
+			appid,
+			'tables',
+			tableid,
+			'relationships'
+		], {
+			requiresAuthorization: true
+		});
+	}
+
 	getTableForms(appid, tableid) {
 		return this.request([
 			appid,
